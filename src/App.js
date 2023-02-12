@@ -1,8 +1,14 @@
+import {Routes, Route} from 'react-router-dom'
+import Homepage from './pages/Homepage'
+import Post from './pages/Post'
+
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/posts/:id" element={<Post />} />
+      </Routes>
   );
 }
 
