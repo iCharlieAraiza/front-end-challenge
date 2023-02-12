@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import {MdModeEdit} from 'react-icons/md'
 
-const EditButton = () => {
+const EditButton = ({onClick}) => {
   return (
-    <Button>
+    <Button onClick={onClick}>
         <MdModeEdit/>      
     </Button>
   )
@@ -13,6 +13,7 @@ const EditButton = () => {
 export default EditButton
 
 const Button = styled.button`
+    cursor: pointer;
     position: fixed;
     width: 50px;
     height: 50px;

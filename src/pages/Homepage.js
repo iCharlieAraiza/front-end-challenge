@@ -18,7 +18,10 @@ const Homepage = () => {
       <Container>
         <Header />
         {isLoading ? (
-          <Loader />
+          <div>
+            <span class="loader"></span>
+            <div>Loading...</div>
+          </div>
         ) : (
           <>
             <Filter setFilter={setFilter} filter={filter} />
