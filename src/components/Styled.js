@@ -235,6 +235,44 @@ export const CardContainer = styled.div`
 `;
 
 
-const DisplayTitle = styled.div`
-    color: orange;
+export const DisplayTitle = styled.div`
+  width: fit-content;
+  margin: 0 auto;
+  text-transform: capitalize;
+  color: var(--color-orange);
+  font-size: 1.2rem;
+  &:before  {
+    content: "[";
+    font-size: 2.3rem;
+    margin-right: 0.5rem;
+  }
+  &:after {
+    content: "]";
+    font-size: 2.3rem;
+    margin-left: 0.5rem;
+  }
+`
+
+export const BlogPost = styled.article`
+  .home-icon {
+    color: grey;
+  }
+  h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+  }
+  .home-link {
+    font-weight: bold;
+    color: var(--color-orange);
+    text-decoration: none;
+    &::before {
+      content: "<";
+      color: grey;
+      margin-right: 5px;
+  }
+  .category {
+    adding: 0.5rem 1rem;
+    border: 1px solid grey;
+    border-radius: 0px;
+  }
 `

@@ -16,11 +16,11 @@ const Button = styled.button`
     position: fixed;
     width: 50px;
     height: 50px;
-    bottom: 10px;
-    left: 10px;
     border-radius: 50%;
     border: none;
     background-color: #f67f50;
+    right: 1rem;
+    top: 2rem;
     svg {
         color: white;
         font-size: 1.4rem;

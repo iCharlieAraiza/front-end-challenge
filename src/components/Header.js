@@ -1,13 +1,15 @@
 import React from 'react'
-import { HeaderWrapper } from './Styled'
+import { HeaderWrapper, DisplayTitle } from './Styled'
 
 const Header = () => {
   return (
     <HeaderWrapper>
-        <div>Making your life Easer</div>
+        <DisplayTitle>Making your life Easer</DisplayTitle>
         <h1>Discovering the World</h1>
     </HeaderWrapper>
   )
 }
+
+
 
 export default Header
