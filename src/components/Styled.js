@@ -269,10 +269,12 @@ export const BlogPost = styled.article`
       content: "<";
       color: grey;
       margin-right: 5px;
-  }
-  .category {
-    adding: 0.5rem 1rem;
-    border: 1px solid grey;
-    border-radius: 0px;
-  }
+    }
+
+    .category {
+      adding: 0.5rem 1rem;
+      border: 1px solid grey;
+      border-radius: 0px;
+    }
+
 `

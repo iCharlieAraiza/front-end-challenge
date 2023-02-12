@@ -5,7 +5,6 @@ const Loader = () => {
   return (
     <StyledLoader>
         <span class="loader"></span>
-        <h2>Hello</h2>
     </StyledLoader>
   )
 }

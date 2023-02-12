@@ -1,7 +1,6 @@
 import React, {createContext} from "react";
-import { useState, useEffect} from "react";
+import { useState} from "react";
 import {useFetch} from "../hooks/useFetch";
-import useModal from "../hooks/useModal"
 
 
 export const GlobalContext = createContext({
@@ -23,9 +22,6 @@ export const GlobalProvider = (props) => {
     const [trigger, setTrigger] = useState('')
     const [ data, isLoading, error, setData ] = useFetch(url, trigger);
     const [isShowing, setIsShowing] = useState(false);
-
-
-    console.log("First Reload")
 
     const getCurrentPost = (id) => {
         return data?.find((item) => item.id === id);
@@ -49,8 +45,6 @@ export const GlobalProvider = (props) => {
         })
         setData(newData)
     }
-
-
 
     return (
         <GlobalContext.Provider value={{data, isLoading, error, getCurrentPost, addNewPost, isShowing, setIsShowing, deletePost, updatePost}}>

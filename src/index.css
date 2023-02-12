@@ -352,9 +352,6 @@ template {
   font-family: 'Open Sans', sans-serif;
 }
 
-L
-<span class="loader"></span>
-CSS
 .loader {
             position: relative;
             width: 108px;
