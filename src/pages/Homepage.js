@@ -11,7 +11,6 @@ const Homepage = () => {
   const [filter, setFilter] = useState("All");
   const [isShowing, setIsShowing] = useState(false);
 
-  console.log("is showing ", isShowing);
   return (
     <Main>
       <Container>

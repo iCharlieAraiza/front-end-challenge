@@ -13,7 +13,8 @@ export const GlobalContext = createContext({
     addNewPost: () => {},
     isShowing: false,
     setIsShowing: () =>{},
-    deletePost: () => {}
+    deletePost: () => {},
+    updatePost: () => {}
 });
 
 
@@ -52,7 +53,7 @@ export const GlobalProvider = (props) => {
 
 
     return (
-        <GlobalContext.Provider value={{data, isLoading, error, getCurrentPost, addNewPost, isShowing, setIsShowing, deletePost}}>
+        <GlobalContext.Provider value={{data, isLoading, error, getCurrentPost, addNewPost, isShowing, setIsShowing, deletePost, updatePost}}>
             {props.children}
         </GlobalContext.Provider>
     )

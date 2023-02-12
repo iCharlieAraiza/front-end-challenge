@@ -5,6 +5,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { getRandomImg } from "../utils/getRandomImg";
 import { GlobalContext } from "../context/GlobalContext";
 import { BsTrash } from "react-icons/bs";
+import { MdModeEditOutline } from "react-icons/md";
 
 const Cards = (props) => {
   const { title, body, cat, id } = props;
@@ -26,18 +27,30 @@ const Cards = (props) => {
       </Link>
       <ButtonSection>
         <p className="category">{cat}</p>
-
-        <button
-          onClick={() => {
-            deletePost(id);
-          }}
-        >
-          <BsTrash />
-        </button>
+        <ButtonWrapper>
+          <Link className="edit-icon" to={`/edit/${id}`}>
+            <MdModeEditOutline />
+          </Link>
+          <button
+            onClick={() => {
+              deletePost(id);
+            }}
+          >
+            <BsTrash />
+          </button>
+        </ButtonWrapper>
       </ButtonSection>
     </CardContainer>
   );
 };
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  margin: 0;
+`;
 
 const ButtonSection = styled.div`
   display: flex;
@@ -59,11 +72,11 @@ const ButtonSection = styled.div`
 `;
 
 const Title = styled.h3`
-    font-size: 1.3rem;
+  font-size: 1.3rem;
   @media (min-width: 768px) {
-            font-size: 1.8rem;
-    }
-`
+    font-size: 1.8rem;
+  }
+`;
 
 const CardContainer = styled.div`
   a  {
@@ -73,7 +86,7 @@ const CardContainer = styled.div`
     font-size: 1rem;
   }
   width: 100%;
-  height: 280px;
+  height: 300px;
   background-color: #fff;
   overflow: hidden;
   position: relative;
@@ -98,7 +111,11 @@ const CardContainer = styled.div`
   }
   .card-content {
     height: 100%;
-    background: linear-gradient( 0deg, rgb(0 0 0 / 54%) 0%, rgb(218 218 218 / 0%) 100% );
+    background: linear-gradient(
+      0deg,
+      rgb(0 0 0 / 54%) 0%,
+      rgb(32 20 20 / 13%) 100%
+    );
     position: absolute;
     bottom: 0;
     left: 0;
@@ -111,7 +128,6 @@ const CardContainer = styled.div`
       font-size: 14px;
       color: #fff;
     }
-
   }
 `;
 
