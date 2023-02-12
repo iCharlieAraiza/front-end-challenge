@@ -1,4 +1,11 @@
 import { useState, useEffect} from "react";
+import { CATEGORIES } from "../utils/constants";
+
+const getRandomCat = () => {
+    const number = Math.floor(Math.random() * CATEGORIES.length) 
+    return CATEGORIES[number]
+}
+
 
 export const useFetch = (url, trigger) => {
     const [data, setData] = useState(null);
@@ -14,7 +21,15 @@ export const useFetch = (url, trigger) => {
             try {
                 const response = await fetch(url, { signal });
                 const data = await response.json();
-                setData(data);
+                const cleanedData = data.map((item) => {
+                    return {
+                        id: item.id,
+                        title: item.title,
+                        body: item.body,
+                        cat: getRandomCat()
+                    };
+                });
+                setData(cleanedData);
                 setIsLoading(false);
                 setError(false);
             } catch (err) {

@@ -1,12 +1,14 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {Main, Container, Grid} from '../components/Styled'
 import Header from '../components/Header'
 import { GlobalContext} from '../context/GlobalContext'
 import Card from '../components/Card'
+import Filter from '../components/Filter'
 
 
 const Homepage = () => {
   const { data, isLoading} = useContext(GlobalContext)
+  const [filter, setFilter] = useState('All')
 
 
   return (
@@ -15,10 +17,12 @@ const Homepage = () => {
             <Header />
             {isLoading ? <span className="loader"></span> :  
                 <>
-                    <Grid>
-                      {data?.map((item) => (
-                        <Card key={item.id} {...item} />
-                      ))}
+                  <Filter setFilter={setFilter} filter={filter}/>
+                  <Grid>
+                    {
+                        filter === 'All' ? data?.map(item => <Card key={item.id} {...item}/>) :
+                        data?.filter(item => item.cat === filter).map(item => <Card key={item.id} {...item}/>)
+                    }
                     </Grid>
                 </>
             }

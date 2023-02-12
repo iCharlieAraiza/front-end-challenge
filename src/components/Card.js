@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { getRandomImg } from "../utils/getRandomImg";
 
 const Cards = (props) => {
   const { title, body, cat, id } = props;
@@ -8,13 +10,16 @@ const Cards = (props) => {
 
   return (
     <CardContainer>
-      <div className="card-content">
-        <Link to={`/posts/${id}`}>
+      <LazyLoadImage
+        effect="blur"
+        src={getRandomImg(cat)}
+        alt={cat}
+      />
+        <Link className="card-content" to={`/posts/${id}`}>
             <h1>{title}</h1>
             <p>{body}</p>
             <p>{cat}</p>
         </Link>
-      </div>
     </CardContainer>
   );
 };
