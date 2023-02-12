@@ -16,10 +16,12 @@ export const Container = styled.div`
 `;
 
 export const Grid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     margin-top: 1rem;
     padding: 1rem;
+    @media (min-width: 480px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 `
 
 
