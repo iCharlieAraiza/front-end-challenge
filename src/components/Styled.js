@@ -233,3 +233,8 @@ export const CardContainer = styled.div`
     }
   }
 `;
+
+
+const DisplayTitle = styled.div`
+    color: orange;
+`

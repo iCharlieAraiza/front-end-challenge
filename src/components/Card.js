@@ -5,7 +5,7 @@ import { getRandomImg } from "../utils/getRandomImg";
 import { GlobalContext } from "../context/GlobalContext";
 import { BsTrash } from "react-icons/bs";
 import { MdModeEditOutline } from "react-icons/md";
-import { CardContainer, Title, ButtonSection, ButtonWrapper, CardTitle } from "./Styled";
+import { CardContainer, ButtonSection, ButtonWrapper, CardTitle } from "./Styled";
 
 const Cards = (props) => {
   const { title, body, cat, id } = props;

@@ -6,6 +6,7 @@ import { GlobalContext } from "../context/GlobalContext";
 import Card from "../components/Card";
 import Filter from "../components/Filter";
 import ModalForm from "../components/ModalForm";
+import Loader from "../components/Loader";
 
 const Homepage = () => {
   const { data, isLoading } = useContext(GlobalContext);
