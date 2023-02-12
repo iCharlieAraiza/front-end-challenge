@@ -26,7 +26,7 @@ const Cards = (props) => {
 
 const CardContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 250px;
   background-color: #fff;
   overflow: hidden;
   position: relative;
@@ -46,7 +46,7 @@ const CardContainer = styled.div`
   }
   .card-content {
     height: 100%;
-    background-color: rgb(221 221 221 / 50%);
+    background-color: rgb(18 18 18 / 4%);
     position: absolute;
     bottom: 0;
     left: 0;

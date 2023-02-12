@@ -1,6 +1,7 @@
 import React, {createContext} from "react";
 import { useState, useEffect} from "react";
 import {useFetch} from "../hooks/useFetch";
+import useModal from "../hooks/useModal"
 
 
 export const GlobalContext = createContext({
@@ -8,14 +9,19 @@ export const GlobalContext = createContext({
     isLoading: true,
     error: false,
     trigger: true,
-    getCurrentPost: () => {}
+    getCurrentPost: () => {},
+    addNewPost: () => {},
+    isShowing: false,
+    toggle: () =>{}
 });
 
 
 export const GlobalProvider = (props) => {
     const [url, setUrl] = useState("https://jsonplaceholder.typicode.com/posts")
     const [trigger, setTrigger] = useState('')
-    const [ data, isLoading, error ] = useFetch(url, trigger);
+    const [ data, isLoading, error, setData ] = useFetch(url, trigger);
+    const {isShowing, toggle} = useModal()
+
 
     console.log("First Reload")
 
@@ -23,9 +29,13 @@ export const GlobalProvider = (props) => {
         return data?.find((item) => item.id === id);
     }
 
+    const addNewPost = (newPost) => {
+        setData([...data, newPost])
+    }
+
 
     return (
-        <GlobalContext.Provider value={{data, isLoading, error, getCurrentPost}}>
+        <GlobalContext.Provider value={{data, isLoading, error, getCurrentPost, addNewPost, isShowing, toggle}}>
             {props.children}
         </GlobalContext.Provider>
     )

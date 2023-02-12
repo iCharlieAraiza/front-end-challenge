@@ -48,7 +48,7 @@ export const useFetch = (url, trigger) => {
             abortController.abort();
         };
     },[trigger, url]);
-    return [ data, isLoading, error ];
+    return [ data, isLoading, error, setData ];
 }
 
 export default useFetch
