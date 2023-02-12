@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { getRandomImg } from "../utils/getRandomImg";
+import { GlobalContext } from "../context/GlobalContext";
 
 const Cards = (props) => {
   const { title, body, cat, id } = props;
+  const { deletePost } = useContext(GlobalContext);
 
 
   return (
@@ -17,16 +19,31 @@ const Cards = (props) => {
       />
         <Link className="card-content" to={`/posts/${id}`}>
             <h1>{title}</h1>
-            <p>{body}</p>
-            <p>{cat}</p>
+            <p>{body}</p>            
         </Link>
+        <ButtonSection>
+            <p>{cat}</p>
+       
+            <p onClick={()=> {deletePost(id)}}>remove</p>
+        </ButtonSection>
     </CardContainer>
   );
 };
 
+const ButtonSection = styled.div`
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+`
+
 const CardContainer = styled.div`
   width: 100%;
-  height: 250px;
+  height: 280px;
   background-color: #fff;
   overflow: hidden;
   position: relative;

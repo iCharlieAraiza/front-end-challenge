@@ -12,7 +12,8 @@ export const GlobalContext = createContext({
     getCurrentPost: () => {},
     addNewPost: () => {},
     isShowing: false,
-    toggle: () =>{}
+    setIsShowing: () =>{},
+    deletePost: () => {}
 });
 
 
@@ -20,7 +21,7 @@ export const GlobalProvider = (props) => {
     const [url, setUrl] = useState("https://jsonplaceholder.typicode.com/posts")
     const [trigger, setTrigger] = useState('')
     const [ data, isLoading, error, setData ] = useFetch(url, trigger);
-    const {isShowing, toggle} = useModal()
+    const [isShowing, setIsShowing] = useState(false);
 
 
     console.log("First Reload")
@@ -33,9 +34,25 @@ export const GlobalProvider = (props) => {
         setData([...data, newPost])
     }
 
+    const deletePost = (id) => {
+        const newData = data.filter((item) => item.id !== id)
+        setData(newData)
+    }
+
+    const updatePost = (id, updatedPost) => {
+        const newData = data.map((item) => {
+            if(item.id === id) {
+                return updatedPost
+            }
+            return item
+        })
+        setData(newData)
+    }
+
+
 
     return (
-        <GlobalContext.Provider value={{data, isLoading, error, getCurrentPost, addNewPost, isShowing, toggle}}>
+        <GlobalContext.Provider value={{data, isLoading, error, getCurrentPost, addNewPost, isShowing, setIsShowing, deletePost}}>
             {props.children}
         </GlobalContext.Provider>
     )
