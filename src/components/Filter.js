@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { CATEGORIES } from "../utils/constants";
+import { Box } from "./Styled";
 
 const Filter = (props) => {
   const { filter, setFilter } = props;
@@ -26,31 +26,6 @@ const Filter = (props) => {
     </Box>
   );
 };
-
-const Box = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: fit-content;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  .active {
-    background-color: #dadada;
-  }
-  button {
-    background: transparent;
-    border: 1px solid #ececec;
-    padding: 10px 20px;
-    width: 50%;
-    cursor: pointer;
-    transition: 0.2s;
-    &:hover {
-        background-color: #dadada;
-    }
-    @media (min-width: 480px) {
-        width: 8rem;
-    }
-  }
-`;
 
 
 export default Filter;

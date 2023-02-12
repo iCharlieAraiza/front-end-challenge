@@ -1,12 +1,18 @@
 import { useContext } from "react";
-import styled from "styled-components";
 import { GlobalContext } from "../context/GlobalContext";
 import { CATEGORIES } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { useInput } from "../hooks/useInput";
+import { Overlay, FormWrap } from "./Styled";
+import { Link } from "react-router-dom";
 
 
-const Form = ({ isShowing, setIsShowing, id, title, cat, body, display = "" }) => {
+const Form = ({ id, title, cat, body, display = "" }) => {
   const {  updatePost} = useContext(GlobalContext);
+
+  const titleInput = useInput('text', title)
+  const bodyInput = useInput('text', body)
+  const catInput = useInput('text', cat)
 
   const navigate = useNavigate();
 
@@ -28,22 +34,24 @@ const Form = ({ isShowing, setIsShowing, id, title, cat, body, display = "" }) =
   };
 
   const handleClick = () => {
-    console.log("click");
+    navigate('/')
+
   };
 
   return (
     <>
       <Overlay />
       <FormWrap onSubmit={onSubmit}>
+        <Link to="/">Back</Link>
         <h3>{display}</h3>
         <div className="form-group">
-          <input type="text" placeholder="Title" value={title} required />
+          <input type="text" placeholder="Title" {...titleInput} required />
         </div>
         <div className="form-group">
-          <textarea placeholder="Content" value={body} />
+          <textarea placeholder="Content" {...bodyInput} />
         </div>
         <div className="form-group">
-          <select value={cat}>
+          <select {...catInput}>
             {CATEGORIES.map((cat) => (
               <option key={`${cat}-option`} value={cat}>
                 {cat}
@@ -61,97 +69,5 @@ const Form = ({ isShowing, setIsShowing, id, title, cat, body, display = "" }) =
     </>
   );
 };
-
 export default Form;
 
-const FormWrap = styled.form`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin: auto;
-  transform: translate(-50%, -50%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 450px;
-  width: 100%;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
-  z-index: 10;
-
-  h3 {
-    margin: 0 0 20px;
-    font-size: 24px;
-    font-weight: 400;
-    text-align: center;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 20px;
-    input,
-    textarea,
-    select {
-      box-sizing: border-box;
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      outline: none;
-      &:focus {
-        border-color: #333;
-      }
-    }
-    textarea {
-      min-height: 100px;
-    }
-    select {
-      padding: 5px;
-    }
-  }
-  .button-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: 400;
-      cursor: pointer;
-      &:focus {
-        outline: none;
-      }
-    }
-    button[type="submit"] {
-      background-color: #333;
-
-      color: #fff;
-    }
-    button[type="reset"] {
-      background-color: #fff;
-      color: #333;
-    }
-  }
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9;
-`;

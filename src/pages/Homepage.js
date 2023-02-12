@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Main, Container, Grid } from "../components/Styled";
+import EditButton from '../components/EditButton'
 import Header from "../components/Header";
 import { GlobalContext } from "../context/GlobalContext";
 import Card from "../components/Card";
@@ -30,7 +31,7 @@ const Homepage = () => {
           </>
         )}
       </Container>
-      <button onClick={() => setIsShowing(true)}>Toggle</button>
+      <EditButton onClick={() => setIsShowing(true)}>Toggle</EditButton>
       {isShowing ? <ModalForm isShowing={isShowing} setIsShowing={setIsShowing}/> : ''}
     </Main>
   );
