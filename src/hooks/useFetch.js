@@ -35,3 +35,5 @@ export const useFetch = (url, trigger) => {
     },[trigger, url]);
     return [ data, isLoading, error ];
 }
+
+export default useFetch
